@@ -20,6 +20,7 @@ html, body {
   border: 5px solid black;
   box-sizing: border-box;
   place-content: center;
+  overflow: hidden;
 }
 
 .btn {
