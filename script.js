@@ -1,5 +1,10 @@
 const container = document.querySelector(".container");
 const button = document.querySelector(".btn");
+const containerWidth = container.offsetWidth;
+const containerHeight = container.offsetHeight;
+const circleSize = 40;
+
+console.log(containerHeight, containerWidth)
 
 function randomColor(){
     red = Math.floor(Math.random() * 256);
@@ -9,17 +14,22 @@ function randomColor(){
 }
 
 function randomPosition(){
-    return `${Math.floor(Math.random() * 100 - 5)}%`
+    const x  = Math.floor(Math.random() * (containerWidth - circleSize - 10))
+    const y = Math.floor(Math.random() *  (containerHeight -circleSize - 10))
+    return [x,y];
 }
 
 
 button.addEventListener("click", (e) => {
     let newCircle = document.createElement ("div");
+    let [x,y] = randomPosition();
+
     newCircle.classList.add("circle");
     newCircle.style.backgroundColor = randomColor();
     newCircle.style.position = "absolute"
-    newCircle.style.top = randomPosition();
-    newCircle.style.left = randomPosition();
+    newCircle.style.left = x + "px";
+    newCircle.style.top = y + "px";
+   
 
     container.appendChild(newCircle)
 })
